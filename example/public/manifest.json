@@ -1,0 +1,8 @@
+{
+  "short_name": "dynamic-react-ab",
+  "name": "dynamic-react-ab",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
