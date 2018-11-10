@@ -1,5 +1,10 @@
 {
   "env": {
-    "jest": true
+    "jest": true,
+    "browser": true
+  },
+  "rules": {
+    "no-undef": "off",
+    "semi-style": "error"
   }
 }
