@@ -24,35 +24,30 @@ class Example extends Component {
 }
 ```
 
-> Dynamic react component to ease AB testing via AB test providers like vwo, optimizely etc.
+> Dynamic react component to ease AB testing via AB test providers like VWO, Optimizely etc.
 
-A/B testing, also called split testing, is an experiment where two (or more) variants of a webpage are shown 
-to users at random to determining which variant leads more acceptane. After finding better variant is is then released for all users.
+A/B testing also known as split testing, is an experiment where two (or more) variants of a webpage are shown to users at random to determine which variant leads to more acceptance. After finding a better variant, it is then released for all users.
 
 A/B testing is extremely important in the world of user acquisition. A good article on this is: https://m.signalvnoise.com/how-we-lost-and-found-millions-by-not-a-b-testing-e70f27dd783e
 
-However, All current solution for AB test for react community requires changes in your codebase. Some of modules are:
+However, the current solutions for A/B test in the react community require changes in your codebase. Some of the modules are:
 
 * react-ab
 * react-ab-test
 
-These are good library, but not provide flexibility to change experiment quickly (say within 15 min or so). 
-A dev effort followed by a release is required which in most experiment (as they are fail fast) not required.
+These are the good libraries, but do not provide flexibility to change the experiment quickly (say within 15 min or so).
+A dev effort followed by a release is required for most of the experiments which should not be needed as most of them are usually fail fast experiments.
 
 ### Approach: Dynamic Component
 
-Dynamic component is blank component ready to comsume data on predefined schema. This way a dev can easily create differect 
-comoonents and launch them instantly. 
+Dynamic component is a blank component ready to consume data on a predefined schema. This way a dev can easily create different components and launch them instantly.
 
-### Why a generic component:
+### Why a *generic* component:
 
-* Most SPA frameworks like Angularjs and Reactjs use bindings to update DOM content. 
-  On applying a conflicting change on the page using VWO/Optimizely/google tag manager editor, updates may not reflect on the page.
-* You many notice that sometimes the original content of the page displays despite using the hide element option. 
-  This happens because most SPA framework render their content component-wise and keep checking for changes.
-  
-By making changes using generic component, we give control to react to change the UI on page instead of fighting with it. It makes react 
-happy and our changes are persistant.
+* Most SPA frameworks like Angular.js and React.js (It is not a framework) use bindings to update DOM content. On applying a conflicting change on the page using VWO/Optimizely/GTM editor (Google Tag Manager), updates may not reflect on the page.
+* You may notice that sometimes the original content of the page is displayed despite using the hide element option. This happens because most SPA frameworks/libraries render their content component-wise and keep checking for changes in the Virtual or Shadow DOM.
+
+By making changes using a *generic* component, we give control to react to change the UI on the page instead of fighting with it. It makes React happy and our changes are persisted!
 
 ## Props:
 
@@ -60,15 +55,15 @@ happy and our changes are persistant.
 
 These props are available in all generic components:
 
-* keyP: This prop will be used to provide key attribute to your generic component
-* classes: Class to be added to your component. It is space seperated string value.
-* style: JSON object with style propertise to be applied on component.
+* keyP: This prop will be used to provide **key** attribute to your generic component
+* classes: Class to be added to your component. It is a space-delimited string value.
+* style: JSON object with style properties to be applied on the component.
 
 #### Generic Button Props:
-* label: Label you want to show on your button
-* cta: Event name which will be trrigerred when user click on this button. This event will be listened by window object.
+* label: Label you want to show on your button.
+* cta: Event name which will be triggered when the user clicks on this button. This event will be listened by the **window** object.
 
-ex: 
+E.g.,:
 
 Let's define our button component:
 
@@ -77,7 +72,7 @@ Let's define our button component:
   type: 'button',
   keyP: 'defaultButton',
   classes: 'custom_btn_class',
-  styles: {padding: '13px 20px'},
+  styles: { padding: '13px 20px' },
   label: 'Generic button',
   cta: 'CUSTOM_BTN_EVENT_1'
 }
@@ -87,17 +82,17 @@ To listen on click we need:
 
 ```javascript
 window.addEventListener('CUSTOM_BTN_EVENT_1', function() {
-  console.log('Generic button is been clicked');
+  console.log('Generic Button is Clicked');
 });
 ```
 
 #### Generic Link Props:
-* label: Label you want to show on your Link
-* cta: Event name which will be trrigerred when user click on this link. This event will be listened by window object.
-* rel: For more information goto: https://www.w3schools.com/TAGS/att_a_rel.asp
+* label: A Label you want to show on your Link.
+* cta: Event name which will be triggered when the user clicks on this link. This event will be listened by the **window** object.
+* rel: For more information please visit https://www.w3schools.com/TAGS/att_a_rel.asp.
 
 
-ex: 
+E.g.,:
 
 Let's define our Link component:
 
@@ -106,7 +101,7 @@ Let's define our Link component:
   type: 'link',
   keyP: 'defaultLink',
   classes: 'custom_link_class',
-  styles: {padding: '13px 20px'},
+  styles: { padding: '13px 20px' },
   label: 'Generic Link',
   cta: 'CUSTOM_LINK_EVENT_1'
 }
@@ -116,27 +111,27 @@ To listen on click we need:
 
 ```javascript
 window.addEventListener('CUSTOM_LINK_EVENT_1', function() {
-  console.log('Generic Link is been clicked');
+  console.log('Generic Link is Clicked');
 });
 ```
 
 #### Generic Div Props:
-* triggerOnMount: An event name to be triggered when this div is mounted.
-* heading: A heading section of div
-* headingClasses: Space seperated class to be added to heading if present
-* content: Plain test to be displayed as inner text of div
-* contentClasses: Space seperated class to be added to content if present
-* contentHtml: A plain HTML to be rendered inside div. You can add listener on button on triggerOnMount event.
-* beforeElem: Element ID before which this div to be placed. default value is null
-* divHeight: Used with beforeElem to determine how much we need to lower it to provide proper space for div.
-* divWidth: Used with beforeElem to determine how much we need to shift right it to provide proper space for div.
-* divPadLeft: Used with beforeElem to determine how much we need to pad it at left align
-* triggerOnMount: An event name which is triggered by div component on window object to tell user it is mounted,
-* triggerOnUnMount: An event name which is triggered by div compoent on window object to tell user it is unmounted.
+* triggerOnMount: An event name to be triggered when this **div** is mounted.
+* heading: A heading section of the **div**.
+* headingClasses: Space-delimited class to be added to heading if present.
+* content: Plain text to be displayed as inner text of the **div**.
+* contentClasses: Space-delimited class to be added to content if present.
+* contentHtml: A plain HTML to be rendered inside the **div**. You can add listener on button on triggerOnMount event.
+* beforeElem: Element ID before which this div to be placed. The default is **null**.
+* divHeight: Used with **beforeElem** to determine how much we need to lower it to provide proper space for the **div**.
+* divWidth: Used with **beforeElem** to determine how much we need to shift it right to provide proper space for the **div**.
+* divPadLeft: Used with **beforeElem** to determine how much we need to pad it at left align.
+* triggerOnMount: An event name which is triggered by the **div** component on the **window** object to tell the user it is mounted.
+* triggerOnUnMount: An event name which is triggered by the **div** component on the **window** object to tell the user it is unmounted.
 * ctaList: This can have multiple Button and Link component as CTAs.
 
 
-ex: 
+E.g.,:
 
 Let's define our Div component:
 
@@ -149,7 +144,7 @@ const divG = {
     styles: {},
     triggerOnMount: 'DIV_LOADED',
     heading: 'Default Heading', // optional
-    // content: 'asdfasdfasdf', // optional either content or contentHtml should be provided
+    // content: 'some dummy content', // optional either content or contentHtml should be provided
     contentHtml: '<p>This is a p tag <button id="a_dynamic_btn" class="btn-filled-sec-large ripple customCss">Sample</button></p><span class="spanner">A simple span class</span> ',
     beforeElem: 'detail-container',
     divHeight: 100,
@@ -174,25 +169,25 @@ const divG = {
   }
 ```
 
-To listen on click of div cta's we need:
+To listen on click of the **div** cta's we need:
 
 ```javascript
 window.addEventListener('CUSTOM_DIV_BTN_EVENT_1', function() {
-  console.log('Cta button of Generic div is been clicked');
+  console.log('CTA Button of the Generic div is Clicked');
 });
 ```
 
 #### Generic Div Props:
-* content: This is Div section to display content inside Modal,
-* closeModal: Boolean value to make it close through props (during on mount or prop change),
-* isOpen: Boolean value to make it open through props (during on mount or prop change),
-* openTriggerEvent: An event name which is triggered by user on window object. This will open modal.,
-* closeTriggerEvent: An event name which is triggered by user on window object. This will close modal.,
-* triggerOnOpen: An event name which is triggered by modal on window object to tell user modal is now open.,
-* triggerOnClose: An event name which is triggered by modal on window object to tell user modal is now close.,
-* triggerOnMount: An event name which is triggered by by modal on window object to tell user modal is now mounted.
+* content: This is a Div section to display content inside Modal.
+* closeModal: Boolean value to make it close through props (during on mount or prop change).
+* isOpen: Boolean value to make it open through props (during on mount or prop change).
+* openTriggerEvent: An event name which is triggered by the user on the **window** object. This will open the modal.
+* closeTriggerEvent: An event name which is triggered by the user on the **window** object. This will close the modal.
+* triggerOnOpen: An event name which is triggered by the modal on the **window** object to tell the user the modal is now opened.
+* triggerOnClose: An event name which is triggered by the modal on the **window** object to tell the user the modal is now closed.
+* triggerOnMount: An event name which is triggered by the modal on the **window** object to tell the user the modal is now mounted.
 
-ex: 
+E.g.,:
 
 Let's define our Div component:
 
@@ -228,20 +223,20 @@ const customStyles = {
   }
 ```
 
-To listen on open, close or mount of modal of div cta's we need:
+To listen on **open**, **close** or **mount** events of the modal of div CTAs we need:
 
 ```javascript
 window.addEventListener('CUSTOM_MODAL_OPEN', function() {
-  console.log('Modal opened');
+  console.log('Modal Opened');
 });
 window.addEventListener('CUSTOM_MODAL_CLOSE', function() {
-  console.log('Modal close');
+  console.log('Modal Closed');
 });window.addEventListener('CUSTOM_MODAL_MOUNTED', function() {
-  console.log('Modal mounted');
+  console.log('Modal Mounted');
 });
 ```
 
-You can add dynamic button with CTA same as ```openTriggerEvent``` to open modal:
+You can add a dynamic button with CTA same as ```openTriggerEvent``` to open the modal:
 
 
 ```javascript
@@ -254,7 +249,8 @@ You can add dynamic button with CTA same as ```openTriggerEvent``` to open modal
   cta: 'CUSTOM_OPEN_MODAL'
 }
 ```
-After defining your components as above, you need to update state of dynamic-react component:
+
+After defining your components as above, you need to update the state of the dynamic-react component:
 
 ```javascript
 const newState = {
@@ -265,51 +261,51 @@ const newState = {
   }
 }
 
-var evt = new CustomEvent('REACT_AB_SET_STATE', {detail: newState})
+var evt = new CustomEvent('REACT_AB_SET_STATE', { detail: newState })
 window.dispatchEvent(evt)
 ```
 
 
 ## Sample:
 
-You can find example folder in repo. This contain an sample app which is using GTM to dynamically inject edit contact form flow.
+You can find an example folder in the repo. This contains a sample app which is using GTM to dynamically inject edit contact form flow.
 
 To use with AB testing providers:
 
 * Each experiment can be used as a variation.
-* We need to place code similar to sample in VWO/Optimizely.
-* Then we can assign user traffic to each variation based on our requirment.
+* We need to place the code similar to sample in VWO/Optimizely.
+* Then we can assign user traffic to each variation based on our requirements.
 
-Their are plenty good tutorials for creating variation. Please check respective site for same.
+There are plenty of good tutorials for creating variations. Please check the respective site for it.
 
 
-With google tag manager:
-* As it is always available for 100% user we can simply create a HTML tag.
-* Copy code inside script tag and it will be available to all users.
+With Google Tag Manager:
+* As it is always available for 100% user we can simply create an HTML tag.
+* Copy the code inside the script tag and it will be available to all users.
 
-AB Testin need custom logic. I am not aware of AB testing via gtag.
+A/B Testing needs custom logic. I am not aware of AB testing via gtag.
 
-For GTM: 
+For GTM:
 
-* Create Workspace and paste gtm code in head section of your HTML file.
+* Create a Workspace and paste the GTM code in the head section of your HTML file.
 * Create a tag in your workspace of type HTML.
-* create script block.
+* create a script block.
 * Paste sample code in it.
 * You can check it in preview mode and then publish it.
 
-GTM is easy to try as it can be used with localhost.
+GTM is easy to try as it can be used with **localhost**.
 
 ## TODO's:
 
-* Allowing multiple experiment run simultaneosly.
-* With react modal lib size goes to 60 KB however without it we have 13 Kb. Need to find alternative to reduce size.
-* Test cases.
+- [ ] Allowing multiple experiments to run simultaneously.
+- [ ] With react modal lib size goes to 60 KB however without it we have 13 Kb. Needs to find an alternative to reduce the size.
+- [ ] Test cases.
 
 ## Contribution:
-Contribution are welcomed. Please raise a PR.
+Contributions are welcome. Please raise the PR.
 
 ## Ownership:
-Code belongs to TravelTriangle Pvt. Ltd.
+The Code belongs to [TravelTriangle Pvt. Ltd](https://traveltriangle.com).
 
 ## License
 
