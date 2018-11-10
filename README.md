@@ -1,5 +1,29 @@
 # dynamic-react-ab
 
+[![NPM](https://img.shields.io/npm/v/dynamic-react-ab.svg)](https://www.npmjs.com/package/dynamic-react-ab) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+## Install
+
+```bash
+npm install --save dynamic-react-ab
+```
+
+## Usage
+
+```jsx
+import React, { Component } from 'react'
+
+import ReactAB from 'dynamic-react-ab'
+
+class Example extends Component {
+  render () {
+    return (
+      <ReactAB />
+    )
+  }
+}
+```
+
 > Dynamic react component to ease AB testing via AB test providers like vwo, optimizely etc.
 
 A/B testing, also called split testing, is an experiment where two (or more) variants of a webpage are shown 
@@ -29,33 +53,6 @@ comoonents and launch them instantly.
   
 By making changes using generic component, we give control to react to change the UI on page instead of fighting with it. It makes react 
 happy and our changes are persistant.
-
-
-
-[![NPM](https://img.shields.io/npm/v/dynamic-react-ab.svg)](https://www.npmjs.com/package/dynamic-react-ab) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-## Install
-
-```bash
-npm install --save dynamic-react-ab
-```
-
-## Usage
-
-```jsx
-import React, { Component } from 'react'
-
-import ReactAB from 'dynamic-react-ab'
-
-class Example extends Component {
-  render () {
-    return (
-      <ReactAB />
-    )
-  }
-}
-```
-
 
 ## Props:
 
