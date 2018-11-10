@@ -295,6 +295,9 @@ For GTM:
 
 GTM is easy to try as it can be used with **localhost**.
 
+## Demo application:
+https://github.com/kishorsharma/dynamic-react-ab-demo
+
 ## TODO's:
 
 - [ ] Allowing multiple experiments to run simultaneously.
