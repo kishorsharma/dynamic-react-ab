@@ -1,6 +1,6 @@
 {
   "name": "dynamic-react-ab",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dynamic react component to ease AB testing via AB test providers like vwo, optimizely etc.",
   "keywords": "ab-test react-ab-test react vwo abtesting abtest-framework reactjs reactjs-components dynamic-react",
   "author": "kishorsharma",
