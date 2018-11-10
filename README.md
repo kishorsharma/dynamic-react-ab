@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # dynamic-react-ab
 
 > Dynamic react component to ease AB testing via AB test providers like vwo, optimizely etc.
@@ -317,3 +318,6 @@ Code belongs to TravelTriangle Pvt. Ltd.
 ## License
 
 MIT © [kishorsharma](https://github.com/kishorsharma)
+=======
+# dynamic-react-component
+>>>>>>> 8d3c45bc831ba6d7530494751999ea71f88aa9de
