@@ -297,9 +297,9 @@ GTM is easy to try as it can be used with **localhost**.
 
 ## TODO's:
 
-[] Allowing multiple experiments to run simultaneously.
-[] With react modal lib size goes to 60 KB however without it we have 13 Kb. Needs to find an alternative to reduce the size.
-[] Test cases.
+[ ] Allowing multiple experiments to run simultaneously.
+[ ] With react modal lib size goes to 60 KB however without it we have 13 Kb. Needs to find an alternative to reduce the size.
+[ ] Test cases.
 
 ## Contribution:
 Contributions are welcome. Please raise the PR.
