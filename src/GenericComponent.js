@@ -20,9 +20,7 @@ export default class GenericComponent extends Component {
       show: false,
       dynamincData: null
     }
-    if (typeof window !== 'undefined') {
-      this.updateLayout('constructor')
-    }
+
     this.updateStateByVWO = this.updateStateByVWO.bind(this)
   }
 
@@ -32,6 +30,9 @@ export default class GenericComponent extends Component {
       const event = new Event(this.state.dynamincData.triggerOnMount)
       window.dispatchEvent(event)
     }
+    if (typeof window !== 'undefined') {
+      this.updateLayout('constructor')
+    }
   }
 
   componentWillUnmount() {
@@ -39,16 +40,13 @@ export default class GenericComponent extends Component {
     window.removeEventListener('REACT_AB_SET_STATE', this.updateStateByVWO)
   }
 
-  componentWillReceiveProps() {
-    if (typeof window !== 'undefined') {
-      this.updateLayout('componentWillReceiveProps')
-    }
-  }
-
   componentDidUpdate() {
     if (this.state.dynamincData && this.state.dynamincData.triggerOnMount) {
       const event = new Event(this.state.dynamincData.triggerOnMount)
       window.dispatchEvent(event)
+    }
+    if (typeof window !== 'undefined') {
+      this.updateLayout('componentWillReceiveProps')
     }
   }
 
