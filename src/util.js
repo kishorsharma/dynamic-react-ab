@@ -3,3 +3,7 @@ export const triggerCustomEvent = eventName => {
     window.dispatchEvent(new Event(eventName))
   }
 }
+
+export const unique = (array = []) => {
+  return array.filter((val, index, arr) => { return arr.indexOf(val) === index })
+}

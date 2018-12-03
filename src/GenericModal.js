@@ -10,6 +10,7 @@ export default class ModalGeneric extends Component {
     keyP: PropTypes.string,
     classes: PropTypes.string,
     styles: PropTypes.object,
+    closeStyle: PropTypes.object,
     content: PropTypes.object,
     closeModal: PropTypes.bool,
     isOpen: PropTypes.bool,
@@ -24,6 +25,17 @@ export default class ModalGeneric extends Component {
     keyP: 'defaultModal',
     classes: '',
     styles: {},
+    closeStyle: {
+      position: 'absolute',
+      right: '-25px',
+      width: '24px',
+      zIndex: 2,
+      paddingLeft: '5px',
+      overflow: 'hidden',
+      background: '#dc3945',
+      color: 'white',
+      fontWeight: 700
+    },
     content: null,
     isOpen: false,
     openTriggerEvent: null,
@@ -119,6 +131,7 @@ export default class ModalGeneric extends Component {
         ariaHideApp={false}
         style={this.props.styles}
       >
+        <div style={this.props.closeStyle} onClick={this.closeModal}>X</div>
         {this.props.content && <DivGeneric {...this.props.content} /> }
       </Modal>
     )

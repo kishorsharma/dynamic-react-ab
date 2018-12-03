@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 import ModalGeneric from './GenericModal'
 import LinkGeneric from './GenericLink'
@@ -20,24 +21,23 @@ export default class GenericComponent extends Component {
       show: false,
       dynamincData: null
     }
-
     this.updateStateByVWO = this.updateStateByVWO.bind(this)
   }
 
+  static propTypes = {
+    stateUpdateEvent: PropTypes.string
+  }
+
   componentDidMount() {
-    window.addEventListener('REACT_AB_SET_STATE', this.updateStateByVWO)
+    window.addEventListener(this.props.stateUpdateEvent, this.updateStateByVWO)
     if (this.state.dynamincData && this.state.dynamincData.triggerOnMount) {
       const event = new Event(this.state.dynamincData.triggerOnMount)
       window.dispatchEvent(event)
     }
-    if (typeof window !== 'undefined') {
-      this.updateLayout('constructor')
-    }
   }
 
   componentWillUnmount() {
-    console.debug('Unmounting generic component')
-    window.removeEventListener('REACT_AB_SET_STATE', this.updateStateByVWO)
+    window.removeEventListener(this.props.stateUpdateEvent, this.updateStateByVWO)
   }
 
   componentDidUpdate() {
@@ -45,26 +45,10 @@ export default class GenericComponent extends Component {
       const event = new Event(this.state.dynamincData.triggerOnMount)
       window.dispatchEvent(event)
     }
-    if (typeof window !== 'undefined') {
-      this.updateLayout('componentWillReceiveProps')
-    }
   }
 
   updateStateByVWO(event) {
-    console.debug('State changes: ', event)
     event.detail && this.setState(event.detail)
-  }
-
-  updateLayout(method) {
-    if (window.dynamincData) {
-      this.setState({
-        layoutKey: `Custom_Layout`,
-        show: true,
-        dynamincData: window.dynamincData
-      }, () => {
-        window.dynamincData = null
-      })
-    }
   }
 
   render () {

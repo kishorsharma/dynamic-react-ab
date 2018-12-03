@@ -300,7 +300,7 @@ https://github.com/kishorsharma/dynamic-react-ab-demo
 
 ## TODO's:
 
-- [ ] Allowing multiple experiments to run simultaneously.
+- [x] Allowing multiple experiments to run simultaneously.
 - [ ] With react modal lib size goes to 60 KB however without it we have 13 Kb. Needs to find an alternative to reduce the size.
 - [ ] Test cases.
 
