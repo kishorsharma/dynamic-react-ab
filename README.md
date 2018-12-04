@@ -49,6 +49,12 @@ Dynamic component is a blank component ready to consume data on a predefined sch
 
 By making changes using a *generic* component, we give control to react to change the UI on the page instead of fighting with it. It makes React happy and our changes are persisted!
 
+## Demo application:
+https://github.com/kishorsharma/dynamic-react-ab-demo
+
+## Blog 
+http://insights.traveltriangle.com/technical/dynamic-programming-in-react-with-ab-testing/
+
 ## Props:
 
 #### Common Props:
@@ -294,9 +300,6 @@ For GTM:
 * You can check it in preview mode and then publish it.
 
 GTM is easy to try as it can be used with **localhost**.
-
-## Demo application:
-https://github.com/kishorsharma/dynamic-react-ab-demo
 
 ## TODO's:
 
